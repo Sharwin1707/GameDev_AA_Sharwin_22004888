@@ -1,8 +1,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:padding="16dp">
+    android:background="@drawable/bck6"
+    android:padding="24dp">
+
+    <!-- Title Text -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🎉 Game Over!"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4" />
 
     <!-- Final Score Text -->
     <TextView
@@ -10,31 +26,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your Score: 0"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
+        android:layout_below="@id/titleText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="24dp" />
 
     <!-- Play Again Button -->
     <Button
         android:id="@+id/playAgainButton"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Play Again"
+        android:text="🔁 Play Again"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"
         android:layout_below="@id/finalScoreText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="50dp"
+        android:padding="12dp"
+        android:background="@drawable/button_outlined_background" />
 
     <!-- Exit Button -->
     <Button
         android:id="@+id/exitButton"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Exit"
+        android:text="🚪 Exit"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="#F44336"
+        android:textColor="#FFFFFF"
         android:layout_below="@id/playAgainButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:padding="12dp"
+         />
 
 </RelativeLayout>
-
