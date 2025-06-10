@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/gradient_background"
+    android:padding="32dp">
+
+    <!-- Summary Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        app:cardCornerRadius="140dp"
+        app:cardElevation="8dp"
+        app:strokeColor="#4CAF50"
+        app:strokeWidth="4dp"
+        android:layout_marginBottom="32dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- Trophy Icon -->
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_trophy"
+                android:layout_marginBottom="16dp"
+                app:tint="#FFD700" />
+
+            <!-- Score Text -->
+            <TextView
+                android:id="@+id/scoreSummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Score: 0"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#2E7D32"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/summaryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recycle Do and Dont's Result"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#616161"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Continue Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFinish"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Go to Quiz"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="28dp"
+        app:backgroundTint="#2C3930"
+        app:icon="@drawable/ic_arrow_forward"
+        app:iconTint="#FFFFFF"
+        app:iconGravity="end"
+        app:iconPadding="8dp"
+        android:elevation="4dp" />
+
+</LinearLayout>
