@@ -7,10 +7,13 @@ import android.widget.TextView;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.widget.ImageView;
+
 
 public class ResultActivity extends AppCompatActivity {
 
     MediaPlayer resultPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,7 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         TextView scoreDisplay = findViewById(R.id.finalScoreText);
+        ImageView trophyImage = findViewById(R.id.trophyImage);
         int score = getIntent().getIntExtra("totalScore", 0);
         scoreDisplay.setText("Your Score: " + score);
 
@@ -26,6 +30,15 @@ public class ResultActivity extends AppCompatActivity {
             resultPlayer = MediaPlayer.create(this, R.raw.clap);
         } else {
             resultPlayer = MediaPlayer.create(this, R.raw.sad);
+        }
+
+        // Show trophy based on score
+        if (score >= 150) {
+            trophyImage.setImageResource(R.drawable.trophy_gold);
+        } else if (score >= 100) {
+            trophyImage.setImageResource(R.drawable.trophy_silver);
+        } else {
+            trophyImage.setImageResource(R.drawable.trophy_bronze);
         }
 
         resultPlayer.setVolume(1.0f, 1.0f); // Optional: adjust volume

@@ -37,26 +37,28 @@
         android:layout_marginTop="30dp"
         android:padding="16dp" />
 
-    <!-- Star Divider -->
-    <TextView
-        android:id="@+id/starDivider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="✮ ✮ ✮"
-        android:textSize="24sp"
-        android:textColor="#FFD700"
-        android:layout_below="@id/finalScoreText"
+    <ImageView
+        android:id="@+id/trophyImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_below="@id/finalScoreText"
+        android:layout_marginTop="30dp"
+        android:contentDescription="Trophy" />
+
+
+
 
     <!-- Button Container -->
+
+
     <LinearLayout
         android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/starDivider"
+
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="390dp"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="8dp">
