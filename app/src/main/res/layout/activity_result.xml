@@ -2,67 +2,113 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bck6"
-    android:padding="24dp">
+    android:padding="32dp">
 
     <!-- Title Text -->
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="🎉 Game Over!"
-        android:textSize="32sp"
+        android:text="🎉 GAME OVER! 🎉"
+        android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textColor="#FFD700"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:shadowColor="#80000000"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="4" />
+        android:layout_marginTop="40dp"
+        android:shadowColor="#000000"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="6"
+        android:letterSpacing="0.1" />
 
-    <!-- Final Score Text -->
+    <!-- Score Display -->
     <TextView
         android:id="@+id/finalScoreText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your Score: 0"
-        android:textSize="24sp"
+        android:layout_width="280dp"
+        android:layout_height="120dp"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
+        android:background="@android:drawable/dialog_holo_light_frame"
         android:layout_below="@id/titleText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="30dp"
+        android:padding="16dp" />
 
-    <!-- Play Again Button -->
-    <Button
-        android:id="@+id/playAgainButton"
-        android:layout_width="250dp"
+    <!-- Star Divider -->
+    <TextView
+        android:id="@+id/starDivider"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="🔁 Play Again"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:backgroundTint="#4CAF50"
-        android:textColor="#FFFFFF"
+        android:text="✮ ✮ ✮"
+        android:textSize="24sp"
+        android:textColor="#FFD700"
         android:layout_below="@id/finalScoreText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:padding="12dp"
-        android:background="@drawable/button_outlined_background" />
+        android:layout_marginTop="20dp" />
 
-    <!-- Exit Button -->
-    <Button
-        android:id="@+id/exitButton"
-        android:layout_width="250dp"
+    <!-- Button Container -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🚪 Exit"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:backgroundTint="#F44336"
-        android:textColor="#FFFFFF"
-        android:layout_below="@id/playAgainButton"
+        android:layout_below="@id/starDivider"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:padding="12dp"
-         />
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="8dp">
 
+        <!-- Play Again Button -->
+        <Button
+            android:id="@+id/playAgainButton"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:text="🔁  PLAY AGAIN"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:background="@android:drawable/btn_default"
+            android:backgroundTint="#4CAF50"
+            android:layout_marginBottom="16dp"
+            android:elevation="8dp"
+            android:padding="12dp" />
+
+        <!-- Exit Button -->
+        <Button
+            android:id="@+id/exitButton"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:text="🚪  EXIT"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:background="@android:drawable/btn_default"
+            android:backgroundTint="#F44336"
+            android:elevation="8dp"
+            android:padding="12dp" />
+    </LinearLayout>
+
+    <!-- Bottom Text - Now properly positioned -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Try again to beat your score!"
+        android:textSize="14sp"
+        android:textColor="#B3FFFFFF"
+        android:layout_below="@id/buttonContainer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_above="@+id/bottomAnchor" />
+
+    <!-- Hidden anchor view for proper bottom alignment -->
+    <View
+        android:id="@+id/bottomAnchor"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

@@ -24,7 +24,9 @@ public class GameActivity extends AppCompatActivity {
     private MediaPlayer wrongSound;
     private TextView scoreText, timerText;
     private CountDownTimer countDownTimer;
-    private long timeLeftInMillis = 10000; // 10 seconds
+
+    private ImageView feedbackImage;
+    private long timeLeftInMillis = 20000; // 20 seconds
 
 
 
@@ -38,6 +40,8 @@ public class GameActivity extends AppCompatActivity {
 
         scoreText = findViewById(R.id.scoreText);
         timerText = findViewById(R.id.timerText);
+        feedbackImage = findViewById(R.id.feedbackImage);
+        feedbackImage.setVisibility(View.GONE);
         correctSound = MediaPlayer.create(this, R.raw.correct);
         wrongSound = MediaPlayer.create(this, R.raw.wrong);
 
@@ -50,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
         setupDrag(findViewById(R.id.trash_box), "paper");
         setupDrag(findViewById(R.id.trash_food), "organic");
         setupDrag(findViewById(R.id.trash_steel), "metal");
-        setupDrag(findViewById(R.id.trash_tissue), "plastic");
+        setupDrag(findViewById(R.id.trash_tissue), "paper");
         setupDrag(findViewById(R.id.trash_plastic), "plastic");
         setupDrag(findViewById(R.id.trash_newspaper), "paper");
 
@@ -110,13 +114,16 @@ public class GameActivity extends AppCompatActivity {
                     String binType = (String) v.getTag();
 
                     if (trashType != null && trashType.equals(binType)) {
+                        showFeedbackImage(R.drawable.tick);
                         correctSound.start(); // ✅ Play correct sound
                         score += 10;
                         scoreText.setText("Score: " + score);
                         draggedView.setVisibility(View.INVISIBLE);
                         checkGameCompletion();
                     } else {
+                        showFeedbackImage(R.drawable.cross);
                         wrongSound.start(); // ❌ Play wrong sound
+
                     }
 
 
@@ -155,6 +162,33 @@ public class GameActivity extends AppCompatActivity {
             }
             goToQuiz();
         }
+    }
+
+    private void showFeedbackImage(int resId) {
+        feedbackImage.setImageResource(resId);
+        feedbackImage.setVisibility(View.VISIBLE);
+        feedbackImage.setScaleX(0.5f);
+        feedbackImage.setScaleY(0.5f);
+        feedbackImage.animate()
+                .scaleX(1.0f)
+                .scaleY(1.0f)
+                .setDuration(200)
+                .start();
+
+        feedbackImage.postDelayed(() -> {
+            feedbackImage.animate()
+                    .scaleX(0.5f)
+                    .scaleY(0.5f)
+                    .alpha(0.0f)
+                    .setDuration(200)
+                    .withEndAction(() -> {
+                        feedbackImage.setVisibility(View.GONE);
+                        feedbackImage.setAlpha(1.0f);
+                        feedbackImage.setScaleX(1.0f);
+                        feedbackImage.setScaleY(1.0f);
+                    })
+                    .start();
+        }, 1500);
     }
 
     private void startTimer() {

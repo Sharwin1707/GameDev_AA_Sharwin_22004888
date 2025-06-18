@@ -19,7 +19,7 @@ public class ResultActivity extends AppCompatActivity {
 
         TextView scoreDisplay = findViewById(R.id.finalScoreText);
         int score = getIntent().getIntExtra("totalScore", 0);
-        scoreDisplay.setText("Total Score: " + score);
+        scoreDisplay.setText("Your Score: " + score);
 
         // Play different sounds based on score
         if (score >= 150) {

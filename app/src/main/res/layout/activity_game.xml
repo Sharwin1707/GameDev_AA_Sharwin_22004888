@@ -104,6 +104,8 @@
         </LinearLayout>
     </LinearLayout>
 
+
+
     <!-- Game Instructions -->
     <TextView
         android:id="@+id/instructionText"
@@ -324,7 +326,18 @@
             </LinearLayout>
 
         </GridLayout>
+
     </LinearLayout>
+
+    <!-- Feedback Image (Added here) -->
+    <ImageView
+        android:id="@+id/feedbackImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:src="@drawable/tick"
+        android:elevation="10dp" />
 
     <!-- Recycling Bins Section -->
     <LinearLayout
@@ -385,6 +398,8 @@
                     android:textColor="#2196F3"
                     android:layout_marginTop="4dp" />
             </LinearLayout>
+
+
 
             <!-- Plastic Bin -->
             <LinearLayout
