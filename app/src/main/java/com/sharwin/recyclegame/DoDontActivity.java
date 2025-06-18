@@ -147,10 +147,10 @@ public class DoDontActivity extends AppCompatActivity {
             feedbackText.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
         } else {
             wrongSound.start();  // Play wrong sound
-            feedbackText.setText("Oops! That's not right.");
+            score = Math.max(0, score - 5); // Deduct 5 points, but don't go below 0
+            feedbackText.setText("Oops! That's not right. -5 points");
             feedbackText.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
         }
-
 
         scoreText.setText("Score: " + score);
         btnRecycle.setEnabled(false);
@@ -164,6 +164,7 @@ public class DoDontActivity extends AppCompatActivity {
             }
         }.start();
     }
+
 
     private void startTimer() {
         countDownTimer = new CountDownTimer(questionTime, interval) {

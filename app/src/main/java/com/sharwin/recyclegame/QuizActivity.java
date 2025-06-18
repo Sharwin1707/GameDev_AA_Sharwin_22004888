@@ -172,7 +172,6 @@ public class QuizActivity extends AppCompatActivity {
 
         if (selectedIndex == currentQuestion.correctAnswerIndex) {
             correctSoundPlayer.start(); // Play correct sound
-            // Correct answer - green background with white text
             selectedButton.setBackgroundResource(R.drawable.correct_answer_bg);
             selectedButton.setTextColor(Color.GREEN);
             selectedButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
@@ -183,20 +182,20 @@ public class QuizActivity extends AppCompatActivity {
             Toast.makeText(this, "Correct! +" + POINTS_PER_CORRECT + " points", Toast.LENGTH_SHORT).show();
         } else {
             wrongSoundPlayer.start(); // Play wrong sound
-            // Wrong answer - red background with white text
             selectedButton.setBackgroundResource(R.drawable.wrong_answer_bg);
             selectedButton.setTextColor(Color.RED);
             selectedButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close, 0);
 
-            // Correct answer - green outline with green text
             correctButton.setBackgroundResource(R.drawable.correct_answer_outline);
             correctButton.setTextColor(ContextCompat.getColor(this, R.color.green));
             correctButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
 
-            Toast.makeText(this, "Wrong! The correct answer is highlighted", Toast.LENGTH_SHORT).show();
+            // Deduct 5 points, ensure it doesn't go below 0
+            totalScore = Math.max(0, totalScore - 5);
+            scoreText.setText("Total Score: " + totalScore);
+            Toast.makeText(this, "Wrong! -5 points. Correct answer is highlighted", Toast.LENGTH_SHORT).show();
         }
 
-        // Disable all buttons and make others semi-transparent
         Button[] buttons = {option1, option2, option3, option4};
         for (Button button : buttons) {
             if (button != selectedButton && button != correctButton) {
@@ -205,12 +204,12 @@ public class QuizActivity extends AppCompatActivity {
             button.setEnabled(false);
         }
 
-        // Move to next question after delay
         questionCard.postDelayed(() -> {
             currentQuestionIndex++;
             displayQuestion();
         }, 2000);
     }
+
     private Button getButtonByIndex(int index) {
         switch (index) {
             case 0: return option1;

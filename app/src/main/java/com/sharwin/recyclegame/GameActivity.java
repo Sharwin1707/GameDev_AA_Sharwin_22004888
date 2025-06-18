@@ -124,8 +124,11 @@ public class GameActivity extends AppCompatActivity {
                         showFeedbackImage(R.drawable.cross);
                         wrongSound.start(); // ❌ Play wrong sound
 
+                        // Deduct 5 points, but don't let the score go below 0
+                        score = Math.max(0, score - 5);
+                        scoreText.setText("Score: " + score);
                     }
-
+                    break;
 
                 case DragEvent.ACTION_DRAG_ENDED:
                     v.setAlpha(1.0f);
@@ -134,6 +137,7 @@ public class GameActivity extends AppCompatActivity {
             return true;
         }
     };
+
 
     private void checkGameCompletion() {
         ImageView[] trashItems = {
