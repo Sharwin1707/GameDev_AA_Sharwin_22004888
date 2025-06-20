@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -6,70 +5,335 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/gradient_background"
-    android:padding="32dp">
+    android:padding="24dp"
+    android:animateLayoutChanges="true">
 
-    <!-- Score Card -->
+    <!-- Celebration Banner -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"
+        android:alpha="0"
+        android:id="@+id/celebrationBanner">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎉"
+            android:textSize="32sp"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Well Done!"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FF6B35"
+            android:fontFamily="sans-serif-medium"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎉"
+            android:textSize="32sp"
+            android:layout_marginStart="8dp"/>
+
+    </LinearLayout>
+
+    <!-- Main Score Card with Glow Effect -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp">
+
+        <!-- Glow Background -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:cardCornerRadius="150dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#1A4CAF50"
+            android:layout_gravity="center"
+            android:alpha="0.7"/>
+
+        <!-- Main Score Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/scoreCard"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            app:cardCornerRadius="140dp"
+            app:cardElevation="12dp"
+            app:strokeColor="#4CAF50"
+            app:strokeWidth="6dp"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="24dp">
+
+                <!-- Animated Trophy Icon -->
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+
+                    <!-- Trophy Glow -->
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:src="@drawable/ic_trophy"
+                        app:tint="#33FFD700"
+                        android:alpha="0.5"/>
+
+                    <!-- Main Trophy -->
+                    <ImageView
+                        android:id="@+id/trophyIcon"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_trophy"
+                        app:tint="#FFD700"
+                        android:layout_gravity="center"
+                        android:scaleX="0"
+                        android:scaleY="0"/>
+
+                </FrameLayout>
+
+                <!-- Score Text with Animation -->
+                <TextView
+                    android:id="@+id/finalScoreText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 Points"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:textColor="#2E7D32"
+                    android:fontFamily="sans-serif-black"
+                    android:alpha="0"/>
+
+                <!-- Score Label -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Score"
+                    android:textSize="14sp"
+                    android:textColor="#757575"
+                    android:layout_marginTop="4dp"
+                    android:alpha="0"
+                    android:id="@+id/scoreLabel"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+
+    <!-- Achievement Stats Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="24dp"
+        android:alpha="0"
+        android:id="@+id/statsRow">
+
+        <!-- Time Taken -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:layout_marginEnd="8dp"
+            app:cardBackgroundColor="#E8F5E8">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⏱️"
+                    android:textSize="24sp"/>
+
+                <TextView
+                    android:id="@+id/timeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2:45"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#2E7D32"
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
+                    android:textSize="12sp"
+                    android:textColor="#757575"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Accuracy -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:layout_marginStart="8dp"
+            app:cardBackgroundColor="#FFF3E0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎯"
+                    android:textSize="24sp"/>
+
+                <TextView
+                    android:id="@+id/accuracyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="85%"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FF8F00"
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accuracy"
+                    android:textSize="12sp"
+                    android:textColor="#757575"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- Performance Message -->
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="280dp"
-        android:layout_height="280dp"
-        app:cardCornerRadius="140dp"
-        app:cardElevation="8dp"
-        app:strokeColor="#4CAF50"
-        app:strokeWidth="4dp"
-        android:layout_marginBottom="32dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        android:layout_marginBottom="32dp"
+        app:cardBackgroundColor="#F3E5F5"
+        android:alpha="0"
+        android:id="@+id/messageCard">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="?attr/selectableItemBackground">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:gravity="center_vertical">
 
-            <!-- Trophy Icon -->
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/ic_trophy"
-                android:layout_marginBottom="16dp"
-                app:tint="#FFD700" />
-
-            <!-- Score Text -->
             <TextView
-                android:id="@+id/finalScoreText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="120 Points"
+                android:text="⭐"
                 android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="#2E7D32"/>
+                android:layout_marginEnd="12dp"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/performanceTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Excellent Work!"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#7B1FA2"/>
+
+                <TextView
+                    android:id="@+id/performanceMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your sorting skills are impressive. Ready for the next challenge?"
+                    android:textSize="14sp"
+                    android:textColor="#9C27B0"
+                    android:layout_marginTop="4dp"/>
+
+            </LinearLayout>
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Subtitle -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sorting Game Result !!"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#616161"
-        android:layout_marginBottom="32dp"/>
-
-    <!-- Continue Button -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnContinueToQuiz"
+    <!-- Action Buttons -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:text="Continue to Quiz"
-        android:textSize="18sp"
-        android:textColor="#FFFFFF"
-        app:cornerRadius="28dp"
-        app:backgroundTint="#2C3930"
-        app:icon="@drawable/ic_arrow_forward"
-        app:iconTint="#FFFFFF"
-        app:iconGravity="end"
-        app:iconPadding="8dp"
-        android:elevation="4dp"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:alpha="0"
+        android:id="@+id/buttonContainer">
 
+        <!-- Continue Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContinueToQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Continue to Quiz"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:cornerRadius="28dp"
+            app:backgroundTint="#2C3930"
+            app:icon="@drawable/ic_arrow_forward"
+            app:iconTint="#FFFFFF"
+            app:iconGravity="end"
+            app:iconPadding="12dp"
+            android:elevation="6dp"
+            app:rippleColor="#4CAF50"
+            android:layout_marginBottom="12dp"
+            android:stateListAnimator="@null"/>
+
+        <!-- Share Result Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnShareResult"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Share Result"
+            android:textSize="16sp"
+            android:textColor="#2C3930"
+            app:cornerRadius="24dp"
+            app:backgroundTint="@android:color/transparent"
+            app:strokeColor="#2C3930"
+            app:strokeWidth="2dp"
+            app:icon="@drawable/ic_share"
+            app:iconTint="#2C3930"
+            app:iconGravity="start"
+            app:iconPadding="8dp"
+            app:rippleColor="#E8F5E8"/>
+
+    </LinearLayout>
 
 </LinearLayout>
