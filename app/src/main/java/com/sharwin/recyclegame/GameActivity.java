@@ -368,8 +368,7 @@ public class GameActivity extends AppCompatActivity
                 countDownTimer.cancel();
             }
 
-            // Victory animation
-            animateVictory();
+            goToQuiz(); // Immediately transition to next page
         }
     }
 

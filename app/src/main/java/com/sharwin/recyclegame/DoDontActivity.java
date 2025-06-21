@@ -40,7 +40,7 @@ public class DoDontActivity extends AppCompatActivity {
     private int score = 0;
     private int streak = 0; // Track consecutive correct answers
     private CountDownTimer countDownTimer;
-    private final long questionTime = 15000; // 15 seconds
+    private final long questionTime = 10000; // 15 seconds
     private final long interval = 1000; // 1 second ticks
 
     private int[] itemImages = {
